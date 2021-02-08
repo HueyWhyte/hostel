@@ -1,0 +1,13 @@
+{
+  "name": "hostel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "npm server.js",
+    "heroku-postbuild": "cd client && npm i && npm run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
