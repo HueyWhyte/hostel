@@ -25,7 +25,7 @@ mongoose
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.log(err));
 
-if (process.env.NODE_ENV == "productioon") {
+if (process.env.NODE_ENV == "production") {
   app.use(express.static("client/build"));
 
   app.get("*", (req, res) => {
