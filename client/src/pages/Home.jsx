@@ -29,20 +29,21 @@ class Home extends Component {
             justifyContent: "space-evenly",
           }}
         >
-          {rooms?.map((room) => (
-            <Link
-              key={room._id}
-              to={`/room/${room._id}`}
-              style={{
-                backgroundColor: "grey",
-                padding: 5,
-                borderRadius: 12,
-                margin: 10,
-              }}
-            >
-              <h1>{room.number}</h1>
-            </Link>
-          ))}
+          {rooms &&
+            rooms?.map((room) => (
+              <Link
+                key={room._id}
+                to={`/room/${room._id}`}
+                style={{
+                  backgroundColor: "grey",
+                  padding: 5,
+                  borderRadius: 12,
+                  margin: 10,
+                }}
+              >
+                <h1>{room.number}</h1>
+              </Link>
+            ))}
         </section>
       </div>
     );
