@@ -32,7 +32,7 @@ class Home extends Component {
             justifyContent: "space-evenly",
           }}
         >
-          {rooms &&
+          {/* {rooms &&
             rooms.map((room) => (
               <Link
                 key={room._id}
@@ -46,7 +46,7 @@ class Home extends Component {
               >
                 <h1>{room.number}</h1>
               </Link>
-            ))}
+            ))} */}
         </section>
       </div>
     );
