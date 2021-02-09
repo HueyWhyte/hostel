@@ -12,6 +12,9 @@ const RoomCardConatiner = styled.a`
 `;
 
 class Home extends Component {
+  state = {
+    rooms: this.props.rooms,
+  };
   componentDidMount() {
     this.props.fetchRooms();
   }
@@ -30,7 +33,7 @@ class Home extends Component {
           }}
         >
           {rooms &&
-            rooms?.map((room) => (
+            rooms.map((room) => (
               <Link
                 key={room._id}
                 to={`/room/${room._id}`}

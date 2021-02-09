@@ -10,18 +10,15 @@ app.use(express.json());
 
 app.use("/api/room", require("./routes/roomRoutes"));
 app.use("/api/student", require("./routes/studentRoutes"));
-
+// https://hostelm.herokuapp.com
 // "mongodb://localhost:27017/hostel_management"
 // "mongodb+srv://HueyWhyte:Famous10@whyte.wdm4x.mongodb.net/whyte?retryWrites=true&w=majority"
 mongoose
-  .connect(
-    "mongodb+srv://HueyWhyte:Famous10@whyte.wdm4x.mongodb.net/whyte?retryWrites=true&w=majority",
-    {
-      useNewUrlParser: true,
-      useCreateIndex: true,
-      useUnifiedTopology: true,
-    }
-  )
+  .connect("mongodb://localhost:27017/hostel_management", {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+  })
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.log(err));
 
