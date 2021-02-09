@@ -25,6 +25,7 @@ class Students extends Component {
             <StudentCard to={`/students/${student._id}`} key={student._id}>
               <h2>{student.name}</h2>
               <p>{student.level}</p>
+              <p>{student.room.number}</p>
             </StudentCard>
           ))}
         </section>

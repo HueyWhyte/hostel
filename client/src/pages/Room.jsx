@@ -21,8 +21,9 @@ class Room extends Component {
 
           <div>
             {students?.map((student) => (
-              <div>
-                <h1>{student.name}</h1>
+              <div key={student._id}>
+                <h2>{student.name}</h2>
+                <p>{student.level}</p>
               </div>
             ))}
           </div>

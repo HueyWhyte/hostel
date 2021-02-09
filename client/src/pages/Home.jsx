@@ -1,20 +1,17 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+// import styled from "styled-components";
 
 import { fetchRooms } from "../redux/actions/roomAction";
 
-const RoomCardConatiner = styled.a`
-  width: 300px;
-  height: 100px;
-  background-color: grey;
-`;
+// const RoomCardConatiner = styled.a`
+//   width: 300px;
+//   height: 100px;
+//   background-color: grey;
+// `;
 
 class Home extends Component {
-  state = {
-    rooms: this.props.rooms,
-  };
   componentDidMount() {
     this.props.fetchRooms();
   }
@@ -33,7 +30,7 @@ class Home extends Component {
             justifyContent: "space-evenly",
           }}
         >
-          {/* {rooms &&
+          {rooms &&
             rooms.map((room) => (
               <Link
                 key={room._id}
@@ -47,7 +44,7 @@ class Home extends Component {
               >
                 <h1>{room.number}</h1>
               </Link>
-            ))} */}
+            ))}
         </section>
       </div>
     );
