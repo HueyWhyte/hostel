@@ -9,9 +9,7 @@ export const fetchRooms = () => (dispatch) => {
         payload: res.data,
       });
     })
-    .catch((err) => {
-      console.log(err);
-    });
+    .catch((err) => console.log(err));
 };
 
 export const fetchRoom = (id) => (dispatch) => {
