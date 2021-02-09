@@ -12,7 +12,6 @@ export default class App extends Component {
     return (
       <Router>
         <NavigationBar />
-
         <Switch>
           <Route exact path="/room/:id" component={Room} />
 

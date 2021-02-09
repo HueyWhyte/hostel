@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 // import styled from "styled-components";
+import { RoomProps } from "../assets/types";
 
 import { fetchRooms } from "../redux/actions/roomAction";
 
@@ -18,6 +19,7 @@ class Home extends Component {
 
   render() {
     const { rooms } = this.props;
+    console.log(rooms);
 
     return (
       <div>
@@ -30,7 +32,7 @@ class Home extends Component {
             justifyContent: "space-evenly",
           }}
         >
-          {rooms?.map((room) => (
+          {rooms?.map((room: RoomProps) => (
             <Link
               key={room._id}
               to={`/room/${room._id}`}
