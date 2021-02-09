@@ -21,6 +21,7 @@ class Home extends Component {
 
   render() {
     const { rooms } = this.props;
+    console.log(rooms);
     return (
       <div>
         <h1>Rooms</h1>

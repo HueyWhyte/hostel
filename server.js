@@ -5,8 +5,8 @@ const cors = require("cors");
 
 const app = express();
 
-app.use(cors());
 app.use(express.json());
+app.use(cors());
 
 app.use("/api/room", require("./routes/roomRoutes"));
 app.use("/api/student", require("./routes/studentRoutes"));
@@ -25,7 +25,7 @@ mongoose
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.log(err));
 
-if (process.env.NODE_ENV == "production") {
+if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 
   app.get("*", (req, res) => {
@@ -33,5 +33,5 @@ if (process.env.NODE_ENV == "production") {
   });
 }
 
-const PORT = process.env.PORT || 1437;
-app.listen(PORT, () => console.log(`http://localhost:${PORT}`));
+const port = process.env.PORT || 1437;
+app.listen(port, () => console.log(`http://localhost:${port}`));
