@@ -8,6 +8,8 @@ export const fetchRooms = () => (dispatch) => {
         type: "FETCH_ROOMS",
         payload: res.data,
       });
+
+      console.log(res.data);
     })
     .catch((err) => console.log(err));
 };
