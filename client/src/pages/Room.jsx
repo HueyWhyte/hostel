@@ -10,10 +10,24 @@ class Room extends Component {
   };
   componentDidMount() {
     const id = this.props.match.params.id;
-    this.props.fetchRoom(id);
-    this.props.fetchStudentInRoom(id);
+    // this.props.fetchRoom(id);
+    // this.props.fetchStudentInRoom(id);
 
-    this.setState({ room: this.props.room, students: this.props.students });
+    fetch(`https://hostelm.herokuapp.com/api/room/${id}`)
+      .then((res) => res.json())
+      .then((room) => {
+        this.setState({ room });
+      })
+      .catch((err) => console.log(err));
+
+    fetch(`https://hostelm.herokuapp.com/api/room/students/${id}`)
+      .then((res) => res.json())
+      .then((students) => {
+        this.setState({ students });
+      })
+      .catch((err) => console.log(err));
+
+    // this.setState({ room: this.props.room, students: this.props.students });
   }
 
   render() {

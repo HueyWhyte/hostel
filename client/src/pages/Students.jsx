@@ -14,8 +14,15 @@ class Students extends Component {
     students: [],
   };
   componentDidMount() {
-    this.props.fetchStudents();
-    this.setState({ students: this.props.students });
+    // this.props.fetchStudents();
+    // this.setState({ students: this.props.students });
+
+    fetch(`https://hostelm.herokuapp.com/api/student`)
+      .then((res) => res.json())
+      .then((students) => {
+        this.setState({ students });
+      })
+      .catch((err) => console.log(err));
   }
 
   render() {
