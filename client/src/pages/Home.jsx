@@ -17,8 +17,6 @@ class Home extends Component {
   }
 
   render() {
-    const { rooms } = this.props;
-
     return (
       <div>
         <h1>Rooms</h1>
@@ -30,7 +28,7 @@ class Home extends Component {
             justifyContent: "space-evenly",
           }}
         >
-          {rooms?.map((room) => (
+          {this.props.rooms?.map((room) => (
             <Link
               key={room._id}
               to={`/room/${room._id}`}
