@@ -3,7 +3,7 @@ const initialState = {
   students: [],
 };
 
-const studentReducer = (state = initialState, action) => {
+const studentReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case "FETCH_STUDENTS":
       return {

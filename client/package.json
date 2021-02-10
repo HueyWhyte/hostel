@@ -25,7 +25,6 @@
     "eject": "react-scripts eject"
   },
   "proxy": "https://hostelm.herokuapp.com/api",
-  "secure": false,
   "eslintConfig": {
     "extends": [
       "react-app",

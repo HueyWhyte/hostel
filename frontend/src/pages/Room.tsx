@@ -3,18 +3,18 @@ import { connect } from "react-redux";
 
 import { fetchRoom, fetchStudentInRoom } from "../redux/actions/roomAction";
 
-class Room extends Component {
+export default class Room extends Component {
   componentDidMount() {
-    const id = this.props.match.params.id;
-    this.props.fetchRoom(id);
-    this.props.fetchStudentInRoom(id);
+    // const id = this.props.match.params.id;
+    // this.props.fetchRoom(id);
+    // this.props.fetchStudentInRoom(id);
   }
 
   render() {
-    const { room, students } = this.props;
+    // const { room, students } = this.props;
     return (
       <div>
-        <h1>Room id {room._id}</h1>
+        {/* <h1>Room id {room._id}</h1>
 
         <section style={{ marginTop: 30 }}>
           <h1>students</h1>
@@ -27,19 +27,19 @@ class Room extends Component {
               </div>
             ))}
           </div>
-        </section>
+        </section> */}
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    room: state.rooms.room,
-    students: state.rooms.students,
-  };
-};
+// const mapStateToProps = (state) => {
+//   return {
+//     room: state.rooms.room,
+//     students: state.rooms.students,
+//   };
+// };
 
-export default connect(mapStateToProps, { fetchRoom, fetchStudentInRoom })(
-  Room
-);
+// export default connect(mapStateToProps, { fetchRoom, fetchStudentInRoom })(
+//   Room
+// );

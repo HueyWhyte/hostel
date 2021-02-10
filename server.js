@@ -15,24 +15,21 @@ app.use("/api/student", require("./routes/studentRoutes"));
 // "mongodb://localhost:27017/hostel_management"
 // "mongodb+srv://HueyWhyte:Famous10@whyte.wdm4x.mongodb.net/whyte?retryWrites=true&w=majority"
 mongoose
-  .connect(
-    "mongodb+srv://HueyWhyte:Famous10@whyte.wdm4x.mongodb.net/whyte?retryWrites=true&w=majority",
-    {
-      useNewUrlParser: true,
-      useCreateIndex: true,
-      useUnifiedTopology: true,
-    }
-  )
+  .connect("mongodb://localhost:27017/hostel_management", {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+  })
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.log(err));
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
+  app.use(express.static(path.join(__dirname, "client/build")));
 
   app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "client", "build", "index.html"));
   });
 }
 
-const port = process.env.PORT || 1437;
-app.listen(port, () => console.log(`http://localhost:${port}`));
+const PORT = process.env.PORT || 8900;
+app.listen(PORT, () => console.log(`http://localhost:${PORT}`));

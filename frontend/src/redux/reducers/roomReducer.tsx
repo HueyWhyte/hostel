@@ -1,3 +1,5 @@
+// import { Room } from "../../assets/types";
+
 const initialState = {
   room: {},
   rooms: [],
@@ -8,22 +10,22 @@ const roomReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case "FETCH_ROOMS":
       return {
-        ...state,
+        ...state.rooms,
         rooms: action.payload,
       };
     case "FETCH_ROOM":
       return {
-        ...state,
+        ...state.room,
         room: action.payload,
       };
     case "FETCH_STUDENTS_IN_ROOM":
       return {
-        ...state,
+        ...state.students,
         students: action.payload,
       };
     case "NEW_ROOM":
       return {
-        ...state,
+        ...state.room,
         rooms: action.payload,
       };
     default:

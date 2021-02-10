@@ -20,7 +20,7 @@ export default class App extends Component {
 
           <Route exact path="/students/:id" component={Student} />
 
-          <Route path="/" component={Home} />
+          <Route exact path="/" component={Home} />
         </Switch>
       </Router>
     );

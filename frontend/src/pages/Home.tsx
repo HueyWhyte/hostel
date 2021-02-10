@@ -1,61 +1,41 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-// import styled from "styled-components";
-import { RoomProps } from "../assets/types";
+import { RoomState, Room } from "../assets/types";
 
-import { fetchRooms } from "../redux/actions/roomAction";
+function Home() {
+  const rooms = useSelector<RoomState, RoomState["rooms"]>(
+    (state) => state.rooms
+  );
 
-// const RoomCardConatiner = styled.a`
-//   width: 300px;
-//   height: 100px;
-//   background-color: grey;
-// `;
+  return (
+    <div>
+      <h1>Rooms</h1>
 
-class Home extends Component {
-  componentDidMount() {
-    this.props.fetchRooms();
-  }
-
-  render() {
-    const { rooms } = this.props;
-    console.log(rooms);
-
-    return (
-      <div>
-        <h1>Rooms</h1>
-
-        <section
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-evenly",
-          }}
-        >
-          {rooms?.map((room: RoomProps) => (
-            <Link
-              key={room._id}
-              to={`/room/${room._id}`}
-              style={{
-                backgroundColor: "grey",
-                padding: 5,
-                borderRadius: 12,
-                margin: 10,
-              }}
-            >
-              <h1>{room.number}</h1>
-            </Link>
-          ))}
-        </section>
-      </div>
-    );
-  }
+      <section
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-evenly",
+        }}
+      >
+        {rooms?.map((room: Room) => (
+          <Link
+            key={room._id}
+            to={`/room/${room._id}`}
+            style={{
+              backgroundColor: "grey",
+              padding: 5,
+              borderRadius: 12,
+              margin: 10,
+            }}
+          >
+            <h1>{room.number}</h1>
+          </Link>
+        ))}
+      </section>
+    </div>
+  );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    rooms: state.rooms.rooms,
-  };
-};
-
-export default connect(mapStateToProps, { fetchRooms })(Home);
+export default Home;

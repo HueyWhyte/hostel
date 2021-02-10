@@ -9,16 +9,16 @@ const StudentCard = styled(Link)`
   background-color: grey;
 `;
 
-class Students extends Component {
-  componentDidMount() {
-    this.props.fetchStudents();
-  }
+export default class Students extends Component {
+  // componentDidMount() {
+  //   this.props.fetchStudents();
+  // }
 
   render() {
-    const { students } = this.props;
+    // const { students } = this.props;
     return (
       <div>
-        <h1>All Students</h1>
+        {/* <h1>All Students</h1>
 
         <section style={{ marginTop: 50 }}>
           {students?.map((student) => (
@@ -28,15 +28,15 @@ class Students extends Component {
               <p>{student.room.number}</p>
             </StudentCard>
           ))}
-        </section>
+        </section> */}
       </div>
     );
   }
 }
-const mapStateToProps = (state) => {
-  return {
-    students: state.students.students,
-  };
-};
+// const mapStateToProps = (state) => {
+//   return {
+//     students: state.students.students,
+//   };
+// };
 
-export default connect(mapStateToProps, { fetchStudents })(Students);
+// export default connect(mapStateToProps, { fetchStudents })(Students);

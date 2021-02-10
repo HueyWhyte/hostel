@@ -1,12 +1,12 @@
 import { Dispatch } from "redux";
 import axios from "axios";
 
-import { RoomProps } from "../../assets/types";
+import { RoomState } from "../../assets/types";
 
 export const fetchRooms = () => (dispatch: Dispatch) => {
   axios
     .get("/room")
-    .then((res: RoomProps[]) => {
+    .then((res) => {
       dispatch({
         type: "FETCH_ROOMS",
         payload: res.data,

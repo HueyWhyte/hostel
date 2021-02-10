@@ -12,11 +12,24 @@ import { fetchRooms } from "../redux/actions/roomAction";
 // `;
 
 class Home extends Component {
+  state = {
+    rooms: [],
+  };
+
   componentDidMount() {
-    this.props.fetchRooms();
+    // this.props.fetchRooms();
+    // https://hostelm.herokuapp.com
+    fetch("https://hostelm.herokuapp.com/api/room")
+      .then((res) => res.json())
+      .then((rooms) => {
+        this.setState({ rooms });
+      })
+      .catch((err) => console.log(err));
   }
 
   render() {
+    // const { rooms } = this.props;
+
     return (
       <div>
         <h1>Rooms</h1>
@@ -28,7 +41,7 @@ class Home extends Component {
             justifyContent: "space-evenly",
           }}
         >
-          {this.props.rooms?.map((room) => (
+          {this.state.rooms.map((room) => (
             <Link
               key={room._id}
               to={`/room/${room._id}`}
