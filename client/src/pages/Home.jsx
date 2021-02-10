@@ -33,7 +33,7 @@ class Home extends Component {
             justifyContent: "space-evenly",
           }}
         >
-          {this.state.rooms.map((room) => (
+          {this.state.rooms?.map((room) => (
             <Link
               key={room._id}
               to={`/room/${room._id}`}
