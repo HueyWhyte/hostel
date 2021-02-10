@@ -10,18 +10,21 @@ const StudentCard = styled(Link)`
 `;
 
 class Students extends Component {
+  state = {
+    students: [],
+  };
   componentDidMount() {
     this.props.fetchStudents();
+    this.setState({ students: this.props.students });
   }
 
   render() {
-    const { students } = this.props;
     return (
       <div>
         <h1>All Students</h1>
 
         <section style={{ marginTop: 50 }}>
-          {students?.map((student) => (
+          {this.state.students?.map((student) => (
             <StudentCard to={`/students/${student._id}`} key={student._id}>
               <h2>{student.name}</h2>
               <p>{student.level}</p>

@@ -4,23 +4,28 @@ import { connect } from "react-redux";
 import { fetchRoom, fetchStudentInRoom } from "../redux/actions/roomAction";
 
 class Room extends Component {
+  state = {
+    room: {},
+    students: [],
+  };
   componentDidMount() {
     const id = this.props.match.params.id;
     this.props.fetchRoom(id);
     this.props.fetchStudentInRoom(id);
+
+    this.setState({ room: this.props.room, students: this.props.students });
   }
 
   render() {
-    const { room, students } = this.props;
     return (
       <div>
-        <h1>Room id {room._id}</h1>
+        <h1>Room id {this.state.room._id}</h1>
 
         <section style={{ marginTop: 30 }}>
           <h1>students</h1>
 
           <div>
-            {students?.map((student) => (
+            {this.state.students?.map((student) => (
               <div key={student._id}>
                 <h2>{student.name}</h2>
                 <p>{student.level}</p>
