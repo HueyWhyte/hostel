@@ -17,14 +17,16 @@ class Home extends Component {
   };
 
   componentDidMount() {
-    // this.props.fetchRooms();
+    this.props.fetchRooms();
+    this.setState({ rooms: this.state.rooms });
+
     // https://hostelm.herokuapp.com
-    fetch("https://hostelm.herokuapp.com/api/room")
-      .then((res) => res.json())
-      .then((rooms) => {
-        this.setState({ rooms });
-      })
-      .catch((err) => console.log(err));
+    // fetch("https://hostelm.herokuapp.com/api/room")
+    //   .then((res) => res.json())
+    //   .then((rooms) => {
+    //     this.setState({ rooms });
+    //   })
+    //   .catch((err) => console.log(err));
   }
 
   render() {
