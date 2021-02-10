@@ -6,10 +6,8 @@ const router = Router();
 
 router.get("/", (req, res) => {
   Room.find()
-    .then((rooms) => {
-      res.send(rooms);
-    })
-    .catch((err) => res.send(err));
+    .then((rooms) => res.json(rooms))
+    .catch((err) => res.json(err));
 });
 
 router.get("/:id", (req, res) => {
