@@ -13,6 +13,7 @@ export default class Complaint extends Component {
       .get("https://hostelm.herokuapp.com/api/complaint")
       .then((res) => {
         this.setState({ complaints: res.data });
+        console.log(res.data);
       })
       .catch((err) => console.log(err));
   }

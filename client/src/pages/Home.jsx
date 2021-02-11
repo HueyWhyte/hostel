@@ -10,7 +10,7 @@ class Home extends Component {
   };
 
   componentDidMount() {
-    this.props.fetchRooms();
+    // this.props.fetchRooms();
     // this.setState({ rooms: this.state.rooms });
 
     fetch("https://hostelm.herokuapp.com/api/room")

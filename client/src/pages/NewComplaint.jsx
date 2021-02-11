@@ -10,6 +10,7 @@ export default class NewComplaint extends Component {
     room: "60216bfe68fd262be493671b",
     student: "",
     students: [],
+    rooms: [],
   };
 
   componentDidMount() {
@@ -21,6 +22,13 @@ export default class NewComplaint extends Component {
       .get("https://hostelm.herokuapp.com/api/student")
       .then((res) => {
         this.setState({ students: res.data });
+      })
+      .catch((err) => console.log(err));
+
+    axios
+      .get("https://hostelm.herokuapp.com/api/room")
+      .then((res) => {
+        this.setState({ rooms: res.data });
       })
       .catch((err) => console.log(err));
   }
@@ -38,8 +46,8 @@ export default class NewComplaint extends Component {
     const data = {
       subject,
       description,
-      room: "60216bfe68fd262be493671b",
-      student: "60217abf98d6f42200bcc386",
+      room,
+      student,
     };
 
     axios
@@ -56,8 +64,8 @@ export default class NewComplaint extends Component {
         <h1>NewComplaint</h1>
 
         <Form onSubmit={this.newComplaint}>
-          <select required onChange={this.handleInput} name="student" id="">
-            <option value="a">Student Name</option>
+          <select required onChange={this.handleInput} name="room" id="">
+            <option value="">Student Name</option>
             {this.state.students.map((student) => (
               <option key={student._id} value={student._id}>
                 {student.name}
@@ -65,8 +73,17 @@ export default class NewComplaint extends Component {
             ))}
           </select>
 
+          <select required onChange={this.handleInput} name="student" id="">
+            <option value="a">Room Number</option>
+            {this.state.rooms.map((room) => (
+              <option key={room._id} value={room._id}>
+                {room.number}
+              </option>
+            ))}
+          </select>
+
           <select required onChange={this.handleInput} name="subject" id="">
-            <option value="."></option>
+            <option value="">select subject</option>
             <option value="a">Faulty fan</option>
             <option value="b">Broken Window</option>
             <option value="c">Socket</option>
