@@ -11,12 +11,13 @@ app.use(cors());
 
 app.use("/api/room", require("./routes/roomRoutes"));
 app.use("/api/student", require("./routes/studentRoutes"));
+app.use("/api/complaint", require("./routes/complaintRoute"));
 // https://hostelm.herokuapp.com
 // "mongodb://localhost:27017/hostel_management"
 // "mongodb+srv://HueyWhyte:Famous10@whyte.wdm4x.mongodb.net/whyte?retryWrites=true&w=majority"
 mongoose
   .connect(
-    "mongodb+srv://HueyWhyte:Famous10@whyte.wdm4x.mongodb.net/whyte?retryWrites=true&w=majority",
+    process.env.MONGODB_URI || "mongodb://localhost:27017/hostel_management",
     {
       useNewUrlParser: true,
       useCreateIndex: true,

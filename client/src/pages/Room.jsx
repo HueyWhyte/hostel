@@ -33,7 +33,7 @@ class Room extends Component {
   render() {
     return (
       <div>
-        <h1>Room id {this.state.room._id}</h1>
+        <h1>Room number: {this.state.room.number}</h1>
 
         <section style={{ marginTop: 30 }}>
           <h1>students</h1>
