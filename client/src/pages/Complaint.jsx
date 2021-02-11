@@ -1,72 +1,34 @@
 import React, { Component } from "react";
-import styled from "styled-components";
-
-import { device } from "../assets/mediaScreens";
-
-const ComplaintPageContainer = styled.section`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100vw;
-`;
-
-const ComplaintCard = styled.div`
-  display: flex;
-  flex-direction: column;
-  background-color: #dddddd;
-  border-radius: 12px;
-  padding: 4px;
-  margin: 10px 5px;
-
-  @media ${device.mobile} {
-    width: 89vw;
-  }
-
-  @media ${device.laptop} {
-    width: 50vw;
-  }
-`;
-
-const ResolveButton = styled.p`
-  background-color: blue;
-  border-radius: 12px;
-  color: white;
-  font-weight: bold;
-  font-size: 19px;
-  padding: 7px;
-  margin: 6px;
-  margin-left: auto;
-  cursor: pointer;
-`;
+import axios from "axios";
+import { Container, ComplaintCard, ResolveButton } from "../assets/Styles";
 
 export default class Complaint extends Component {
   state = {
     complaints: [],
   };
 
+  // https://hostelm.herokuapp.com/api/complaint
   componentDidMount() {
-    fetch("https://hostelm.herokuapp.com/api/complaint")
-      .then((res) => res.json())
-      .then((complaints) => {
-        this.setState({ complaints });
+    axios
+      .get("https://hostelm.herokuapp.com/api/complaint")
+      .then((res) => {
+        this.setState({ complaints: res.data });
       })
       .catch((err) => console.log(err));
   }
 
   resolveIssue = (id) => {
-    fetch(`https://hostelm.herokuapp.com/api/complaint/${id}/resolve`, {
-      method: "PUT",
-    })
-      .then((res) => res.json())
-      .then((complaint) => {
-        console.log(complaint);
+    axios
+      .put(`https://hostelm.herokuapp.com/api/complaint/${id}/resolve`)
+      .then((res) => {
+        console.log(res.data);
       })
       .catch((err) => console.log(err));
   };
 
   render() {
     return (
-      <ComplaintPageContainer>
+      <Container>
         <h1>New Complaint</h1>
 
         <section>
@@ -110,7 +72,7 @@ export default class Complaint extends Component {
               </ComplaintCard>
             ))}
         </section>
-      </ComplaintPageContainer>
+      </Container>
     );
   }
 }

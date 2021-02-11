@@ -1,16 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-// import styled from "styled-components";
 
 import { fetchRooms } from "../redux/actions/roomAction";
-
-// const RoomCardConatiner = styled.a`
-//   width: 300px;
-//   height: 100px;
-//   background-color: grey;
-// `;
-
+import { Container } from "../assets/Styles";
 class Home extends Component {
   state = {
     rooms: [],
@@ -32,7 +25,7 @@ class Home extends Component {
     // const { rooms } = this.props;
 
     return (
-      <div>
+      <Container>
         <h1>Rooms</h1>
 
         <section
@@ -57,7 +50,7 @@ class Home extends Component {
             </Link>
           ))}
         </section>
-      </div>
+      </Container>
     );
   }
 }

@@ -31,6 +31,10 @@ export default class NavigationBar extends Component {
         <NavLink exact to="/complaints">
           Complaints
         </NavLink>
+
+        <NavLink exact to="/newcomplaint">
+          New Complaint
+        </NavLink>
       </NavigationBarContainer>
     );
   }

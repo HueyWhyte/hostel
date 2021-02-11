@@ -7,6 +7,7 @@ import Students from "./pages/Students";
 import Student from "./pages/Student";
 import NavigationBar from "./components/NavigationBar";
 import Complaint from "./pages/Complaint";
+import NewComplaint from "./pages/NewComplaint";
 
 export default class App extends Component {
   render() {
@@ -20,6 +21,8 @@ export default class App extends Component {
           <Route exact path="/students/:id" component={Student} />
 
           <Route exact path="/students" component={Students} />
+
+          <Route exact path="/newcomplaint" component={NewComplaint} />
 
           <Route exact path="/complaints" component={Complaint} />
 

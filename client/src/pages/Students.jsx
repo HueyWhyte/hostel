@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { fetchStudents } from "../redux/actions/studentAction";
+import { Container } from "../assets/Styles";
 
 const StudentCard = styled(Link)`
   background-color: grey;
@@ -27,7 +28,7 @@ class Students extends Component {
 
   render() {
     return (
-      <div>
+      <Container>
         <h1>All Students</h1>
 
         <section style={{ marginTop: 50 }}>
@@ -39,7 +40,7 @@ class Students extends Component {
             </StudentCard>
           ))}
         </section>
-      </div>
+      </Container>
     );
   }
 }
