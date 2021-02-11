@@ -7,7 +7,7 @@ export default class NewComplaint extends Component {
   state = {
     subject: "",
     description: "",
-    room: "60216bfe68fd262be493671b",
+    room: "",
     student: "",
     students: [],
     rooms: [],
@@ -64,7 +64,7 @@ export default class NewComplaint extends Component {
         <h1>NewComplaint</h1>
 
         <Form onSubmit={this.newComplaint}>
-          <select required onChange={this.handleInput} name="room" id="">
+          <select required onChange={this.handleInput} name="student" id="">
             <option value="">Student Name</option>
             {this.state.students.map((student) => (
               <option key={student._id} value={student._id}>
@@ -73,7 +73,7 @@ export default class NewComplaint extends Component {
             ))}
           </select>
 
-          <select required onChange={this.handleInput} name="student" id="">
+          <select required onChange={this.handleInput} name="room" id="">
             <option value="a">Room Number</option>
             {this.state.rooms.map((room) => (
               <option key={room._id} value={room._id}>
