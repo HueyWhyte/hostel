@@ -10,19 +10,19 @@ class Home extends Component {
   };
 
   componentDidMount() {
-    this.props.fetchRooms();
-    this.setState({ rooms: this.state.rooms });
+    // this.props.fetchRooms();
+    // this.setState({ rooms: this.state.rooms });
 
-    // fetch("https://hostelm.herokuapp.com/api/room")
-    //   .then((res) => res.json())
-    //   .then((rooms) => {
-    //     this.setState({ rooms });
-    //   })
-    //   .catch((err) => console.log(err));
+    fetch("https://hostelm.herokuapp.com/api/room")
+      .then((res) => res.json())
+      .then((rooms) => {
+        this.setState({ rooms });
+      })
+      .catch((err) => console.log(err));
   }
 
   render() {
-    const { rooms } = this.props;
+    // const { rooms } = this.props;
 
     return (
       <Container>
@@ -35,21 +35,20 @@ class Home extends Component {
             justifyContent: "space-evenly",
           }}
         >
-          {rooms &&
-            rooms.map((room) => (
-              <Link
-                key={room._id}
-                to={`/room/${room._id}`}
-                style={{
-                  backgroundColor: "grey",
-                  padding: 5,
-                  borderRadius: 12,
-                  margin: 10,
-                }}
-              >
-                <h1>{room.number}</h1>
-              </Link>
-            ))}
+          {this.state.rooms.map((room) => (
+            <Link
+              key={room._id}
+              to={`/room/${room._id}`}
+              style={{
+                backgroundColor: "grey",
+                padding: 5,
+                borderRadius: 12,
+                margin: 10,
+              }}
+            >
+              <h1>{room.number}</h1>
+            </Link>
+          ))}
         </section>
       </Container>
     );
