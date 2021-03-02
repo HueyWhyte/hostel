@@ -61,7 +61,7 @@ export default class NewComplaint extends Component {
   render() {
     return (
       <Container>
-        <h1>NewComplaint</h1>
+        <h1>New Complaint</h1>
 
         <Form onSubmit={this.newComplaint}>
           <select required onChange={this.handleInput} name="student" id="">

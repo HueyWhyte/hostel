@@ -20,6 +20,8 @@ const NavigationBarContainer = styled.div`
 
 export default class NavigationBar extends Component {
   render() {
+    let isAuth = false;
+
     return (
       <NavigationBarContainer>
         <NavLink to="/">Home</NavLink>
@@ -27,13 +29,18 @@ export default class NavigationBar extends Component {
         <NavLink exact to="/students">
           Students
         </NavLink>
-
-        <NavLink exact to="/complaints">
-          Complaints
-        </NavLink>
+        {isAuth ? (
+          <NavLink exact to="/complaints">
+            Complaints
+          </NavLink>
+        ) : null}
 
         <NavLink exact to="/newcomplaint">
           New Complaint
+        </NavLink>
+
+        <NavLink exact to="/auth">
+          Login
         </NavLink>
       </NavigationBarContainer>
     );

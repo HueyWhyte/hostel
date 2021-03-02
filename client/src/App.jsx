@@ -8,6 +8,7 @@ import Student from "./pages/Student";
 import NavigationBar from "./components/NavigationBar";
 import Complaint from "./pages/Complaint";
 import NewComplaint from "./pages/NewComplaint";
+import Auth from "./pages/Auth";
 
 export default class App extends Component {
   render() {
@@ -25,6 +26,8 @@ export default class App extends Component {
           <Route exact path="/newcomplaint" component={NewComplaint} />
 
           <Route exact path="/complaints" component={Complaint} />
+
+          <Route exact path="/auth" component={Auth} />
 
           <Route exact path="/" component={Home} />
         </Switch>

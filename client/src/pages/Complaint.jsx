@@ -1,14 +1,26 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 import axios from "axios";
 import { Container, ComplaintCard, ResolveButton } from "../assets/Styles";
 
-export default class Complaint extends Component {
+import {
+  fetchComplaints,
+  // resolveComplaint,
+} from "../redux/actions/complaintAction";
+
+class Complaint extends Component {
   state = {
     complaints: [],
   };
 
   // https://hostelm.herokuapp.com/api/complaint
   componentDidMount() {
+    fetchComplaints();
+    this.fetchComplaintsz();
+  }
+
+  fetchComplaintsz = () => {
     axios
       .get("https://hostelm.herokuapp.com/api/complaint")
       .then((res) => {
@@ -16,9 +28,10 @@ export default class Complaint extends Component {
         console.log(res.data);
       })
       .catch((err) => console.log(err));
-  }
+  };
 
   resolveIssue = (id) => {
+    // resolveComplaint(id);
     axios
       .put(`https://hostelm.herokuapp.com/api/complaint/${id}/resolve`)
       .then((res) => {
@@ -28,9 +41,14 @@ export default class Complaint extends Component {
   };
 
   render() {
+    let isAuth = true;
+    if (!isAuth) {
+      return <Redirect to="/" />;
+    }
+
     return (
       <Container>
-        <h1>New Complaint</h1>
+        <h1>Complaints</h1>
 
         <section>
           {this.state.complaints
@@ -52,10 +70,9 @@ export default class Complaint extends Component {
         </section>
 
         <br />
-        <br />
         <hr />
 
-        <h1>Resolved Complaint</h1>
+        <h1>Resolved Complaints</h1>
 
         <section>
           {this.state.complaints
@@ -77,3 +94,11 @@ export default class Complaint extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    complaints: state.complaints.complaints,
+  };
+};
+
+export default connect(mapStateToProps, { fetchComplaints })(Complaint);
